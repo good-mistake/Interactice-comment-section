@@ -191,6 +191,12 @@ function processComments(comments) {
       handleScore(event, button);
     });
   });
+  // commentsContainer.addEventListener("click", (event) => {
+  //   const target = event.target;
+  //   if (target.classList.contains("replyBtn")) {
+  //     handleReplyButtonClick(event, currentUser);
+  //   }
+  // });
 }
 function isISODate(dateString) {
   const isoDateRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/;
@@ -207,7 +213,7 @@ function handleReplyButtonClick(event, currentUser) {
   }
 
   const userInfo = {
-    id: `reply-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
+    id: `${Date.now()}-${Math.floor(Math.random() * 1000)}`,
     username: currentUser.username,
     image: currentUser.image.png,
   };
@@ -256,14 +262,12 @@ function handleReplyButtonClick(event, currentUser) {
 function appendReply(commentId, userInfo, replyContent, replyTo) {
   const parentContainer = document.getElementById(`comment-${commentId}`);
   const userReply = document.createElement("div");
-  console.log(userInfo);
+
   const createdAt = new Date();
 
   userReply.innerHTML = `
-
-    
-    <div id="comment-${commentId}"  >
-      <div class=replies >
+    <article id="comment-${userInfo.id}"  >
+      <section class=replies >
       ${
         screenWidth > 770
           ? `      <div class=score><span class=plus>+</span>
@@ -310,13 +314,13 @@ function appendReply(commentId, userInfo, replyContent, replyTo) {
         `
         }
         </div>
-      </div> 
-    </div>
+      </section> 
+    </article>
   `;
   parentContainer.append(userReply);
 
   const storedReplies = JSON.parse(localStorage.getItem("replies")) || [];
-  const replyId = `reply-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+  const replyId = `${Date.now()}-${Math.floor(Math.random() * 1000)}`;
 
   storedReplies.push({
     id: replyId,
@@ -339,7 +343,7 @@ function appendReply(commentId, userInfo, replyContent, replyTo) {
   deleteButtons.forEach((button) => {
     button.addEventListener("click", (event) => handleDeleteButtonClick(event));
   });
-  const editButtons = document.querySelectorAll(".editBtn");
+  const editButtons = parentContainer.querySelectorAll(".editBtn");
   editButtons.forEach((button) => {
     button.addEventListener("click", handleEditButtonClick);
   });
@@ -446,6 +450,7 @@ function handleDeleteButtonClick(event) {
   const clickedBtn = event.currentTarget;
   const replyId = clickedBtn.dataset.replyId;
   console.log(replyId);
+  console.log("Clicked Button:", clickedBtn);
   const overlay = document.createElement("div");
   overlay.classList.add("overlay");
   const confirmation = document.createElement("div");
@@ -467,7 +472,7 @@ function handleDeleteButtonClick(event) {
 
   deleteBtn.addEventListener("click", () => {
     const replyElement = document.getElementById(`comment-${replyId}`);
-
+    console.log(replyElement);
     if (replyElement) {
       replyElement.remove();
     }
