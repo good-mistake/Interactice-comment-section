@@ -1,0 +1,369 @@
+body {
+  font-family: "Rubik", sans-serif;
+  background-color: #f5f6fa;
+}
+.hidden {
+  display: none;
+}
+#root {
+  display: grid;
+  place-items: center;
+}
+.container {
+  margin-top: 2rem;
+  width: 60%;
+}
+.commentSection {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+  padding: 20px;
+  background: white;
+  border-radius: 15px;
+}
+.replies {
+  display: flex;
+  align-items: center;
+
+  margin: 0px 15px 5px 12%;
+  padding: 25px 15px;
+  background: white;
+  border-radius: 15px;
+}
+.userInfo {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
+}
+.userInfo img {
+  width: 15%;
+  margin: 0 10px;
+}
+
+.topCommentSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  padding: 0px 12px;
+  background-color: #f5f6fa;
+  border-radius: 10px;
+}
+.plus {
+  font-weight: 500;
+  color: #c8c4e6;
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+.plus,
+.minus {
+  cursor: pointer;
+}
+.minus {
+  font-size: 2.5rem;
+  color: #c8c4e6;
+}
+.scoreNumber {
+  color: #6e6faa;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+.content {
+  padding: 10px;
+  color: hsl(211, 10%, 45%);
+  line-height: 1.5rem;
+}
+.commentAndDetails {
+  width: 80%;
+}
+.userName {
+  margin-right: 10px;
+  font-weight: 700;
+  color: #232833;
+}
+.createdAt {
+  color: #82878d;
+}
+.replyBtn {
+  background-color: white;
+  border: none;
+  color: #6166a8;
+  font-weight: bold;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+.relpyTo {
+  color: #6163a0;
+  font-weight: 600;
+}
+.currentUserBtn button {
+  background-color: white;
+  border: 0;
+  font-size: 1rem;
+  font-weight: 550;
+  cursor: pointer;
+}
+.currentUserBtn button.deleteBtn {
+  margin-right: 10px;
+  color: #ce727d;
+}
+.currentUserBtn button.editBtn {
+  color: #52528b;
+}
+.currentUserReply {
+  background-color: white;
+  margin: 15px 15px 15px 12%;
+  padding: 20px;
+  display: flex;
+  align-items: flex-start;
+  border-radius: 15px;
+}
+.reply-input,
+.editReply-input {
+  width: 80%;
+  height: 90px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 1px solid #5358b6;
+  margin: 0 10px;
+  font-size: 1rem;
+}
+.editReply-input {
+  width: 100%;
+  height: 8rem;
+}
+.currentUserReply img {
+  width: 7%;
+}
+.currentUserReply button,
+.confirmEditBtn {
+  padding: 15px 25px;
+  cursor: pointer;
+  background-color: #5358b6;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 550;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.confirmEditBtn {
+  margin-top: 1rem;
+}
+.confirmation {
+  position: fixed;
+  top: 50%;
+  width: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 35px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.confirmation h2 {
+  margin-top: 0;
+  color: #364250;
+}
+
+.confirmation p {
+  margin-bottom: 20px;
+  line-height: 2rem;
+  color: #6d6e72;
+  font-size: 1.25rem;
+}
+
+.confirmation button {
+  padding: 17px 30px;
+  margin-right: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 550;
+}
+
+.confirmation button.delete {
+  background-color: #ee6368;
+  color: white;
+  border: none;
+}
+
+.confirmation button.cancel {
+  background-color: #68717e;
+  color: white;
+  border: none;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(122, 122, 124, 0.5);
+  z-index: 999;
+}
+.you {
+  background-color: #5658b6;
+  font-weight: 550;
+  margin-left: 2px;
+  color: white;
+  font-size: 14px;
+  padding: 1px 5px;
+}
+.disabledDeleteBtn {
+  color: #f6d2d2 !important;
+}
+.disabledEditBtn {
+  color: #cecce9 !important;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    width: 75%;
+  }
+  .confirmation {
+    width: 40%;
+  }
+}
+@media (max-width: 950px) {
+  .container {
+    width: 80%;
+  }
+  .confirmation {
+    width: 50%;
+  }
+  .currentUserBtn button.deleteBtn {
+    margin: 0;
+  }
+  .currentUserBtn {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  .topCommentSection {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 770px) {
+  .container {
+    width: 98%;
+    margin-top: 0px;
+  }
+  .commentSection {
+    margin: 15px 0 15px 0;
+  }
+  .replies {
+    margin: 0px 0px 5px 4%;
+  }
+  .currentUserReply {
+    margin: 15px 0px 15px 2.5rem;
+    flex-direction: column;
+    align-items: baseline;
+    padding: 10px 20px;
+  }
+  .currentUserReply button {
+    margin-top: 10px;
+  }
+  .reply-input {
+    width: 100%;
+  }
+  .currentUserReply img {
+    width: 2.75rem;
+    margin-bottom: 10px;
+  }
+  .confirmation {
+    width: 75%;
+  }
+
+  .confirmation button {
+    padding: 12px 10px;
+    font-size: 12px;
+  }
+  .topCommentSection {
+    flex-wrap: nowrap;
+  }
+  .createdAt {
+    font-size: 14px;
+  }
+  .userName {
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .commentSection {
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 15px 7px;
+  }
+  .scoreAndBtn {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .replies {
+    flex-direction: column;
+  }
+  .commentAndDetails {
+    width: 100%;
+  }
+  .score .plus {
+    margin-right: 15px;
+  }
+  .plus {
+    margin-bottom: 1px;
+  }
+  .minus,
+  .plus {
+    font-size: 1.5rem;
+  }
+  .score {
+    flex-direction: row;
+    padding: 5px 12px;
+    margin: 0;
+  }
+  .minus {
+    margin-left: 15px;
+  }
+  .userInfo img {
+    width: 13%;
+  }
+  .you {
+    font-size: 12px;
+  }
+  .scoreNumber,
+  .replyBtn,
+  .confirmation p {
+    font-size: 1rem;
+  }
+  .content {
+    font-size: 15px;
+    padding: 0px;
+  }
+  .editReply-input {
+    height: 12rem;
+  }
+  .confirmEditBtn {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+}
+@media (max-width: 290px) {
+  .confirmation button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .scoreAndBtn {
+    flex-direction: column;
+  }
+}
